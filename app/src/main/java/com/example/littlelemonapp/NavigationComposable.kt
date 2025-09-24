@@ -1,29 +1,28 @@
 package com.example.littlelemonapp
 
+import android.content.Context
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun MyNavigation(startDestination: String) {
-    val navController = rememberNavController()
-    val context = LocalContext.current
-
+fun MyNavigation(
+    navController: NavHostController,
+    startDestination: String,
+    database: AppDatabase,
+    context: Context
+) {
     NavHost(navController = navController, startDestination = startDestination) {
 
-        // Onboarding screen
         composable(OnboardingDestination.route) {
             Onboarding(navController = navController, context = context)
         }
 
-        // Home screen
         composable(HomeDestination.route) {
-            Home(navController = navController)
+            HomeScreen(database = database, navController = navController)
         }
 
-        // Profile screen
         composable(ProfileDestination.route) {
             Profile(navController = navController, context = context)
         }

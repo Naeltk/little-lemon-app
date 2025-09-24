@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20" // matches your Kotlin version
 }
 
 android {
@@ -50,6 +52,26 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.material.icons.extended)
+    kapt(libs.room.compiler)
+
+// latest version
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.glide.compose)
+    implementation(libs.lifecycle.livedata.ktx)
+    // In your module-level build.gradle.kts or build.gradle
+
+    // For kotlinx.serialization
+    implementation(libs.kotlinx.serialization.json) // Use the latest version
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
