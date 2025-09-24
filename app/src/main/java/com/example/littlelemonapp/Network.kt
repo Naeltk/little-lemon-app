@@ -10,9 +10,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
 
-// -------------------
-// Network Data Models
-// -------------------
+
 @Serializable
 data class MenuNetwork(
     val menu: List<MenuItemNetwork>
@@ -28,9 +26,6 @@ data class MenuItemNetwork(
     val category: String
 )
 
-// -------------------
-// Ktor Client
-// -------------------
 val httpClient = HttpClient(CIO) {
     install(ContentNegotiation) {
         json(Json {
@@ -41,9 +36,7 @@ val httpClient = HttpClient(CIO) {
     }
 }
 
-// -------------------
-// Fetch Menu Function
-// -------------------
+
 suspend fun fetchMenu(): List<MenuItemNetwork> {
     val url =
         "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
